@@ -1,27 +1,27 @@
-var avatar = new Vue({
-    el: '#avatar',
-    data: {
-      message: 'HERE Should be an avatar picture'
-    }
-  })
+Vue.component('pp-fio', {
+  props: ['first','last','middle'],
+  template: `
+  <div>
+  <div><h2>{{first}} {{last}}</h2></div>
+  <div><h4>{{middle}}</h4></div>
+  </div>
+  `
+})
 
-  var fio = new Vue({
-    el: '#fio',
-    data: {
-      message: 'Aleksander Panov'
-    }
-  })
+Vue.component('pp-avatar', {
+  props: ['source'],
+  template: `<div><img v-bind:src="source"></img></div>`
+})
 
-  var level = new Vue({
-    el: '#level',
+  var app = new Vue({
+    el: '#app',
+    template: `
+    <div>
+      <pp-avatar source="https://dummyimage.com/136x136/e0e0e0.png" />
+      <pp-fio first="Aleksander" last="Panov" middle="Vladimirovich" />
+    </div>
+    `,
     data: {
-      message: '35'
-    }
-  })
-
-  var seeds = new Vue({
-    el: '#seeds',
-    data: {
-      message: 'programmer, artists'
+      title: 'Personal Profile'
     }
   })
